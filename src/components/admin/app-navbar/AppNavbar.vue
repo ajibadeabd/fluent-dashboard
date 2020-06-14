@@ -26,7 +26,7 @@
           <va-icon-vuestic />
         </router-link>
       </div>
-      <div class="app-navbar__center lg5 md4">
+      <!-- <div class="app-navbar__center lg5 md4">
         <span
           class="app-navbar__text"
           :style="{color: this.$themes.gray}"
@@ -50,7 +50,7 @@
         >
           {{$t('navbar.repository')}}
         </va-button>
-      </div>
+      </div> -->
       <app-navbar-actions
         class="app-navbar__actions md5 lg4"
         :user-name="userName"
