@@ -15,6 +15,34 @@
         <dashboard-map ref="dashboardMap"/>
       </div>
     </div>
+    <div class="row row-equal">
+      <div class="flex xs12 md6 lg6">
+        <div class="va-card">
+          <div class="va-card__header">
+            <div class="va-card__header-inner">Fluentbit Data</div>
+          </div>
+          <div class="va-card__body va-card__body--padding-top" v-for="content in data" :key="content">
+            <p>Version:   {{content.version}}</p>
+            <p>Edition:   {{content.edition}}</p>
+            <div class="markup-tables">
+              <va-card class="mb-2">
+                <table class="va-table">
+                  <thead>
+                    <tr>
+                      <th>Flags</th>
+                    </tr>
+                  </thead>
+                  <tr v-for="flag in content.flags" :key="flag">
+                    <td>{{ flag}}</td>
+                  </tr>
+                </table>
+              </va-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -24,6 +52,7 @@ import DashboardInfoBlock from './DashboardInfoBlock'
 import DashboardTable from './DashboardTable'
 import DashboardTabs from './DashboardTabs'
 import DashboardMap from './DashboardMap'
+import axios from 'axios'
 
 export default {
   name: 'dashboard',
@@ -34,11 +63,22 @@ export default {
     DashboardTabs,
     DashboardMap,
   },
+  data () {
+    return {
+      data: [],
+    }
+  },
   methods: {
     addAddressToMap ({ city, country }) {
       this.$refs.dashboardMap.addAddress({ city: city.text, country })
     },
   },
+  mounted () {
+    axios
+      .get('http://127.0.0.1:2020')
+      .then(response => (this.data = response.data))
+  },
+
 }
 </script>
 
