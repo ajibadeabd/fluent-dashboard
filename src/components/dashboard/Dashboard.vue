@@ -1,20 +1,5 @@
 <template>
   <div class="dashboard">
-    <dashboard-charts />
-    <dashboard-info-block />
-    <div class="row">
-      <div class="flex xs12">
-        <dashboard-table />
-      </div>
-    </div>
-    <div class="row row-equal">
-      <div class="flex xs12 lg6">
-        <dashboard-tabs @submit="addAddressToMap"/>
-      </div>
-      <div class="flex xs12 lg6">
-        <dashboard-map ref="dashboardMap"/>
-      </div>
-    </div>
     <div class="row row-equal">
       <div class="flex xs12 md6 lg6">
         <div class="va-card">
@@ -42,26 +27,40 @@
         </div>
       </div>
     </div>
-
+    <dashboard-charts />
+    <dashboard-info-block />
+    <div class="row">
+      <div class="flex xs12">
+        <dashboard-table />
+      </div>
+    </div>
+    <div class="row row-equal">
+      <div class="flex xs12 lg6">
+        <dashboard-tabs @submit="addAddressToMap"/>
+      </div>
+      <div class="flex xs12 lg6">
+        <dashboard-map ref="dashboardMap"/>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import DashboardCharts from './DashboardCharts'
-import DashboardInfoBlock from './DashboardInfoBlock'
-import DashboardTable from './DashboardTable'
-import DashboardTabs from './DashboardTabs'
-import DashboardMap from './DashboardMap'
+// import DashboardInfoBlock from './DashboardInfoBlock'
+// import DashboardTable from './DashboardTable'
+// import DashboardTabs from './DashboardTabs'
+// import DashboardMap from './DashboardMap'
 import axios from 'axios'
 
 export default {
   name: 'dashboard',
   components: {
     DashboardCharts,
-    DashboardInfoBlock,
-    DashboardTable,
-    DashboardTabs,
-    DashboardMap,
+    // DashboardInfoBlock,
+    // DashboardTable,
+    // DashboardTabs,
+    // DashboardMap,
   },
   data () {
     return {
