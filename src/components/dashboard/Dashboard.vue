@@ -41,6 +41,23 @@
       <div class="flex xs12 lg6">
         <dashboard-map ref="dashboardMap"/>
       </div>
+      <div class="flex xs12 md6 lg6">
+        <div class="va-card">
+          <div v-for="detail in chart" :key="detail">
+            <h3>Cncf</h3>
+            cncf: {{chart.input.cncf}}
+            <p>cncf-record: {{chart.input.cncf.records}}</p>
+            <p> cncf-bytes: {{chart.input.cncf.bytes}}</p>
+
+            <h3>CPU</h3>
+            <!-- error on this line below uncommnet to see it-->
+            <!-- CPU: {{chart.input.cpu.1}} -->
+          </div>
+
+          <h2> all data</h2>
+          {{chart}}
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -51,6 +68,7 @@ import DashboardCharts from './DashboardCharts'
 // import DashboardTable from './DashboardTable'
 // import DashboardTabs from './DashboardTabs'
 // import DashboardMap from './DashboardMap'
+import LineChart from './chart.vue'
 import axios from 'axios'
 
 export default {
@@ -61,10 +79,12 @@ export default {
     // DashboardTable,
     // DashboardTabs,
     // DashboardMap,
+    LineChart,
   },
   data () {
     return {
       data: [],
+      chart: [],
     }
   },
   methods: {
@@ -73,8 +93,9 @@ export default {
     },
   },
   mounted () {
+    const api = 'http://127.0.0.1:2020'
     axios
-      .get('http://127.0.0.1:2020')
+      .get(api)
       .then(response => (this.data = response.data))
   },
 
