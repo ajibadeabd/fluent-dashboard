@@ -14,5 +14,11 @@ export const getDonutChartData = (themes) => {
     }
   }
 
+  // mounted() {
+  //   axios
+  //     .get('http://127.0.0.1:2020')
+  //     .then(response => (this.data = response.data))
+  // },
+
   return generatedData
 }
