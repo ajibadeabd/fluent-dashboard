@@ -2,9 +2,17 @@
 
 First of all, make sure you have all prerequisites installed:
 - [Node.js](https://nodejs.org/en/) (>=8.9)
-- [npm](https://www.npmjs.com/get-npm) version 3+ (or [yarn](https://yarnpkg.com/lang/en/docs/install/#mac-stable) version 1.16+)  and [Git](https://git-scm.com/).
+- [npm](https://www.npmjs.com/get-npm) version 3+ (or [yarn](https://yarnpkg.com/lang/en/docs/install/#mac-stable) version 1.16+)
+- [Docker](https://docker.com)
+
+
+
 
 After checking the prerequisites, follow these simple steps to install and use Fluentbit Dashboard:
+
+```
+docker run -ti -p 127.0.0.1:2020:2020 fluent/fluent-bit:1.4 /fluent-bit/bin/fluent-bit -H -i cpu  -i cpu -o stdout -f 1
+```
 
 ```
 $ npm install

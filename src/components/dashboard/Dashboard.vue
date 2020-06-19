@@ -46,6 +46,9 @@
           <div v-for="detail in chart" :key="detail">
             <h3>Cncf</h3>
             cncf: {{chart.input.cncf}}
+            <p>cncf-record: {{chart.input.cncf.records}}</p>
+            <p> cncf-bytes: {{chart.input.cncf.bytes}}</p>
+
             <h3>CPU</h3>
             CPU: {{chart.input.cpu}}
           </div>
@@ -93,10 +96,19 @@ export default {
     axios
       .get(api)
       .then(response => (this.data = response.data))
-
+      
     axios.get('http://127.0.0.1:2020/api/v1/metrics')
-      .then(response => (this.chart = response.data),
+      .then(response => {
+        console.log(response)
+        const chart = {
+          cncf: response.data.cncf,
+          cpu: response.data.cpu || response.data["cpu.1"] || response.data["cpu.2"],
+        }
+        (this.chart = chart)
+        },
+
       ).catch(err => (console.log(err)))
+
   },
 
 }
