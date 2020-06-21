@@ -4,22 +4,41 @@ chart {
     input {
         cpu [
             {
+                records
+                bytes
+            },
+            {   
+                records
                 bytes
             },
             {
-                bytes
-            },
-            {
+                records
                 bytes
             }
         ],
         random [
-            {
+            {   
+                records
                 bytes
             }
         ]
     }
+    parser {
+        xyz {
+            "add_records": 
+            "drop_records": 
+        }
+    }
     output {
+        stdout [
+            {
+                "proc_records": 0,
+                "proc_bytes": 0,
+                "errors": 0,
+                "retries": 0,
+                "retries_failed": 0   
+            }
+        ]
 
     }
 }
@@ -56,3 +75,6 @@ response.data {
 }
 
 ```
+
+Objects
+

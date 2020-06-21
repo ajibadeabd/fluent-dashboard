@@ -103,14 +103,21 @@ export default {
     axios
       .get("http://127.0.0.1:2020/api/v1/metrics")
       .then(response => {
-        console.log(response);
-        const chart = {
-          cncf: response.data.cncf,
-          cpu:
-            response.data["cpu.0"] ||
-            response.data["cpu.1"] ||
-            response.data["cpu.1"]
-        }((this.chart = response.data));
+
+        var inputplugin = Object.keys(response.data.input);
+
+        // var parserPlugin = Object.keys(response.data.parser);
+
+        var outputPlugin = Object.keys(response.data.output);
+
+        console.log(inputplugin,outputPlugin)
+
+        inputplugin.map( val => {
+          console.log(response.data.input[val])
+        })
+        outputPlugin.map( val => {
+          console.log(response.data.output[val])
+        })
       })
       .catch(err => console.log(err));
   }
